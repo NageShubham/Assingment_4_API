@@ -10,7 +10,8 @@ import { sendSlackMessage } from './post_slack_message';
 import { reportFailureToJira, TestFailureContext } from './jira_Integration';
 import { createXrayTestExecutionIfNotExists } from './xray_Integration';
 import { executeQuery } from '../utils/databaseUtils';
-import { el, faker } from '@faker-js/faker';
+// import { el, faker } from '@faker-js/faker';
+import { fakerEL as faker } from '@faker-js/faker';
 
 dotenv.config();
 
