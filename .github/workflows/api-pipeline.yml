@@ -28,8 +28,9 @@ jobs:
       - name: Smoke Test (1 iteration only)
         run: |
           newman run postman/api-test-collection.postman_collection.json \
-          -e postman/api-test-env.postman_environment.json \
-          --iteration-count 1
+            -e postman/api-test-env.postman_environment.json \
+            -d postman/test-data.csv.csv \
+            --iteration-count 1
 
 
   # -------------------------
@@ -59,15 +60,15 @@ jobs:
       - name: Run Postman Regression
         run: |
           newman run postman/api-test-collection.postman_collection.json \
-          -e postman/api-test-env.postman_environment.json \
-          -d postman/test-data.csv.csv \
-          --reporters cli,htmlextra,json \
-          --reporter-htmlextra-export ./reports/postman-report.html \
-          --reporter-htmlextra-title "API Automation Test Results" \
-          --reporter-htmlextra-showEnvironmentData true \
-          --timeout-request 15000 \
-          --delay-request 300 \
-          --env-var "swapiBase=${{ secrets.SWAPI_BASE }}"
+            -e postman/api-test-env.postman_environment.json \
+            -d postman/test-data.csv.csv \
+            --reporters cli,htmlextra,json \
+            --reporter-htmlextra-export ./reports/postman-report.html \
+            --reporter-htmlextra-title "API Automation Test Results" \
+            --reporter-htmlextra-showEnvironmentData true \
+            --timeout-request 15000 \
+            --delay-request 300 \
+            --env-var "swapiBase=${{ secrets.SWAPI_BASE }}"
 
       - name: Upload Postman Report
         if: always()
@@ -93,9 +94,7 @@ jobs:
         with:
           node-version: 18
 
-      # IMPORTANT FIX: install inside correct folder
       - name: Install dependencies
-        working-directory: .
         run: npm ci
 
       - name: Install Playwright Browsers
