@@ -1,0 +1,6 @@
+personId,personName,filmCount,homeworldId,artworkId,expectedArtist
+1,Luke Skywalker,4,1,129884,Alma Thomas
+2,C-3PO,6,1,4,Lawrence Carmichael Earle
+3,R2-D2,6,8,52724,Elihu Vedder
+4,Darth Vader,4,1,129884,Thomas
+5,Leia Organa,4,2,4,Earle
